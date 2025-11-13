@@ -1,4 +1,3 @@
-// fetch services and show
 const backendURL = "https://ethical-portal.onrender.com";
 async function loadServices(){
   const r = await fetch(`${backendURL}/api/services`);
