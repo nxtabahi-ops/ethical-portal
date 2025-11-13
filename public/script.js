@@ -43,7 +43,7 @@ document.getElementById('pay-form')?.addEventListener('submit', async (e)=>{
   e.preventDefault();
   const upi = window.merchantUpi || 'lnxempire@ibl';
   const amount = document.getElementById('amount').value;
-  const qrRes = await fetch(`/api/qr?upi=${encodeURIComponent(upi)}&amount=${encodeURIComponent(amount)}&name=${encodeURIComponent('EthicalPortal')}`);
+  const qrRes = await fetch(`${backendURL}/api/qr?upi=${encodeURIComponent(upi)}&amount=${encodeURIComponent(amount)}&name=${encodeURIComponent('EthicalPortal')}`);
   const qrData = await qrRes.json();
   document.getElementById('qrimg').src = qrData.qr;
   document.getElementById('merchant-upi').innerText = upi;
@@ -61,7 +61,7 @@ document.getElementById('mark-paid')?.addEventListener('click', async ()=>{
     details: document.getElementById('details').value,
     utr: ''
   };
-  const res = await fetch('/api/payments',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});
+  const res = await fetch(`${backendURL}/api/payments`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});
   const json = await res.json();
   if(json.ok){
     document.getElementById('report-section').classList.remove('hidden');
@@ -84,7 +84,7 @@ document.getElementById('report-form')?.addEventListener('submit', async (e)=>{
     details: document.getElementById('details').value,
     utr: utr
   };
-  await fetch('/api/payments',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});
+  await fetch(`${backendURL}/api/payments`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)});
   alert('Report submitted (demo).');
   document.getElementById('modal').classList.add('hidden');
 });
