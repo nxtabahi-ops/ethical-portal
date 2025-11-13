@@ -1,6 +1,7 @@
 // fetch services and show
+const backendURL = "https://ethical-portal.onrender.com";
 async function loadServices(){
-  const r = await fetch('/api/services');
+  const r = await fetch(`${backendURL}/api/services`);
   const data = await r.json();
   const container = document.getElementById('services');
   container.innerHTML = '';
