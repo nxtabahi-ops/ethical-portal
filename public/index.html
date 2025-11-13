@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Ethical Portal — Demo Client</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Ethical Service Portal — Demo</h1>
+    </header>
+
+    <main id="main">
+      <div id="services"></div>
+    </main>
+  </div>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-inner">
+      <button id="close" class="close">×</button>
+      <h2 id="modal-title">Checkout</h2>
+
+      <div class="modal-grid">
+        <form id="pay-form">
+          <label>Full name<input id="payer-name"/></label>
+          <label>Amount (INR)<input id="amount" readonly/></label>
+          <label>Your UPI (reference)<input id="user-upi" placeholder="you@bank"/></label>
+          <label>Target / username<input id="target"/></label>
+          <label>Details <textarea id="details"></textarea></label>
+          <div class="actions">
+            <button type="button" id="cancel">Cancel</button>
+            <button type="submit">Proceed to Gateway</button>
+          </div>
+        </form>
+
+        <div id="gateway" class="gateway hidden">
+          <div id="qrbox"><img id="qrimg" src="" alt="QR"/></div>
+          <div><div>Merchant UPI:</div><div id="merchant-upi"></div></div>
+          <div>Payment Status: <span id="status">Pending</span></div>
+          <button id="mark-paid">Mark as Paid (demo)</button>
+        </div>
+      </div>
+
+      <div id="report-section" class="hidden">
+        <h3>Submit Report / Details</h3>
+        <form id="report-form">
+          <label>UTR / Transaction ID<input id="utr"/></label>
+          <div class="actions">
+            <button id="submit-report" type="submit">Submit Report (Download Summary)</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
